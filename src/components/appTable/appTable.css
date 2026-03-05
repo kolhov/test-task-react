@@ -1,0 +1,19 @@
+
+.app-table__header th {
+  background-color: #d9e1ec;
+  font-size: 14px;
+  font-weight: 400;
+  height: 40px;
+}
+.app-table__header th:first-child {
+  border-radius: 8px 0 0 0;
+}
+.app-table__header th:last-child {
+  border-radius: 0 8px 0 0;
+}
+
+.app-table__body td {
+  height: 40px;
+  font-size: 14px;
+  font-weight: 400;
+}

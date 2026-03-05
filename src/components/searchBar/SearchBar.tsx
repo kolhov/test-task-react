@@ -12,8 +12,6 @@ export default function SearchBar() {
     <Box
       display={"flex"}
       gap={"13px"}
-      paddingInline={"40px"}
-      pt={"21px"}
     >
       <InputGroup
         startElement={<Icon icon={"lucide:search"} style={{ scale: 1.4, color: '#B0B0B0' }} />}
@@ -25,6 +23,8 @@ export default function SearchBar() {
       </InputGroup>
       <Button
         variant={"surface"}
+        fontWeight={"400"}
+        fontSize={"16px"}
         w={"112px"}
       >
         <Icon
