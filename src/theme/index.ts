@@ -3,7 +3,7 @@ import {
   defaultConfig,
   defineConfig,
   defineRecipe,
-  defineSlotRecipe
+  defineSlotRecipe,
 } from "@chakra-ui/react";
 
 const buttonRecipe = defineRecipe({
@@ -12,6 +12,7 @@ const buttonRecipe = defineRecipe({
   },
   variants: {
     size: {
+      sm: { fontSize: "14px", height: "32px" },
       md: { fontSize: "16px" },
     },
   },
@@ -32,7 +33,7 @@ const placeholderRecipe = defineRecipe({
   base: {
     _placeholder: {
       color: "#B0B0B0",
-      fontWeight: '400',
+      fontWeight: "400",
       fontSize: "14px",
     },
   },
@@ -42,7 +43,7 @@ const config = defineConfig({
   theme: {
     recipes: {
       button: buttonRecipe,
-      input: placeholderRecipe
+      input: placeholderRecipe,
     },
     slotRecipes: {
       field: labelRecipe,

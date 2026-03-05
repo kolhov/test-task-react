@@ -17,8 +17,24 @@ export default function AppMainLayout() {
     setCurrentStatus(status);
   }
 
+  const MY_ID = 101;
+
+  const filteredData = applicationsData
+    .filter((x) => (isPersonal ? x.technician.id === MY_ID : true))
+    .filter((x) =>
+      currentStatus === StatusEnum.AllStatuses
+        ? true
+        : x.status.id === currentStatus,
+    );
+
   return (
-    <Box display={"flex"} gap={"21px"} marginInline={"40px"} mt={'21px'} flexDirection={"column"}>
+    <Box
+      display={"flex"}
+      gap={"21px"}
+      marginInline={"40px"}
+      mt={"21px"}
+      flexDirection={"column"}
+    >
       <SearchBar />
       <FilterBar
         isPersonal={isPersonal}
@@ -26,10 +42,12 @@ export default function AppMainLayout() {
         onPersonClick={onPersonClick}
         onStatusClick={onStatusClick}
       />
-      <Bleed inline={10}> 
+      <Bleed inline={10}>
         <Separator size={"sm"} />
       </Bleed>
-      <AppTable data={applicationsData} />
+      <Box>
+        <AppTable data={filteredData} />
+      </Box>
     </Box>
   );
 }

@@ -1,42 +1,43 @@
 import { PriorityEnum, type Priority } from "@/types";
-import { Box } from "@chakra-ui/react";
+import { Box, type BoxProps } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 
-interface Props {
+interface Props extends BoxProps {
   priority: Priority;
+  onlyIcon?: boolean;
 }
 
-export default function PriorityBadge({ priority }: Props) {
+export default function PriorityBadge({ priority, onlyIcon, ...props }: Props) {
   let icon = "";
   let color = "";
 
   switch (priority.id) {
     case PriorityEnum.Critical: {
-      icon = 'ix:double-chevron-up'
-      color = '#B93C3C'
-      break
+      icon = "ix:double-chevron-up";
+      color = "#B93C3C";
+      break;
     }
     case PriorityEnum.High: {
-      icon = 'ix:chevron-up'
-      color = '#B93C3C'
-      break
+      icon = "ix:chevron-up";
+      color = "#B93C3C";
+      break;
     }
     case PriorityEnum.Low: {
-      icon = 'ix:chevron-down'
-      color = '#2D60ED'
-      break
+      icon = "ix:chevron-down";
+      color = "#2D60ED";
+      break;
     }
     case PriorityEnum.Normal: {
-      icon = 'ix:rhomb'
-      color = '#CC892A'
-      break
+      icon = "ix:rhomb";
+      color = "#CC892A";
+      break;
     }
   }
 
   return (
-    <Box display={'flex'} gap={'6px'} >
-      <Icon icon={icon} style={{scale: 1.2, translate: '0 3px', color}} />
-      <Box opacity={0.5}>{priority.name}</Box>
+    <Box display={"flex"} gap={"6px"} {...props}>
+      <Icon icon={icon} style={{ scale: 1.2, translate: "0 3px", color }} />
+      {!onlyIcon && <Box opacity={0.5}>{priority.name}</Box>}
     </Box>
   );
 }

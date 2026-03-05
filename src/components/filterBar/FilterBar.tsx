@@ -1,6 +1,6 @@
 import { statusesData } from "@/mock/data";
 import { StatusEnum } from "@/types";
-import { Box, Button, ScrollArea, Separator } from "@chakra-ui/react";
+import { Box, Button, ScrollArea, Separator, useMediaQuery } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 
 interface Props {
@@ -16,15 +16,27 @@ export default function FilterBar({
   onStatusClick,
   onPersonClick,
 }: Props) {
-  return (
-    <ScrollArea.Root size="xs" mb={'-12px'}>
+
+  const [isMobile] = useMediaQuery(['(max-width: 48rem)'])
+  return ( 
+    <ScrollArea.Root size="xs" mb={"-12px"}>
       <ScrollArea.Viewport>
-        <ScrollArea.Content pb={'12px'}>
-          <Box display="flex">
-            <Box display="flex" gap={"10px"}>
+        <ScrollArea.Content pb={"12px"}>
+          <Box display="flex" gap={'10px'}>
+            <Button
+              hideFrom={"md"}
+              size={'sm'}
+              variant={isPersonal ? "solid" : "surface"}
+              onClick={onPersonClick}
+              width={'36px'}
+            >
+              <Icon icon={"prime:filter"} />
+            </Button>
+            <Box display="flex" gap={"10px"} flexDirection={'row-reverse'}>
               {statusesData.map((status) => (
                 <Button
                   key={status.id}
+                  size={isMobile ? 'sm' : 'md'}
                   variant={currentStatus === status.id ? "solid" : "surface"}
                   onClick={() => onStatusClick(status.id)}
                 >
@@ -33,11 +45,13 @@ export default function FilterBar({
               ))}
             </Box>
             <Separator
+              hideBelow={"md"}
               margin={"0 24px 0 27px"}
               size={"lg"}
               orientation={"vertical"}
             />
             <Button
+              hideBelow={"md"}
               variant={isPersonal ? "solid" : "surface"}
               onClick={onPersonClick}
             >

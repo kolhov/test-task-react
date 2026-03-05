@@ -45,7 +45,14 @@ export default function StatusBadge({ id, name }: Props) {
   }
 
   return (
-    <Box display={'inline-flex'} borderRadius={"4px"} bgColor={bg} p={"2px 6px"}>
+    <Box
+      display={"inline-flex"}
+      borderRadius={"4px"}
+      bgColor={bg}
+      p={"2px 6px"}
+      h={'fit-content'}
+      w={'max-content'}
+    >
       {name}
     </Box>
   );
