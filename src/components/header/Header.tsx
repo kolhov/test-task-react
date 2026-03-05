@@ -24,13 +24,14 @@ const links = {
   ],
 };
 
-export type NavLinks = typeof links
+export type NavLinks = typeof links;
 
 export default function Header() {
   const [isMobile] = useMediaQuery(["(max-width: 48rem)"]);
 
   return (
     <Box
+      as={"header"}
       borderBottom="1px solid #D9E1EC"
       height={{ base: "72px", md: "86px" }}
       display={"flex"}
@@ -63,7 +64,7 @@ export default function Header() {
             </Circle>
           </Float>
         </Avatar.Root>
-        <Button variant={"surface"} fontWeight="400" hideBelow={"md"}>
+        <Button variant={"surface"}  hideBelow={"md"}>
           <Icon icon={"mingcute:exit-line"} />
           Выйти
         </Button>
