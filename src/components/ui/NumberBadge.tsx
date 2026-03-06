@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import "@fontsource/golos-text";
+import "@fontsource/golos-text/index.css";
 
 interface Props {
   name: string;
