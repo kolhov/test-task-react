@@ -1,12 +1,27 @@
 import type { Application } from "@/types";
 import AppCard from "../ui/appCard";
-import { ScrollArea } from "@chakra-ui/react";
+import { Box, ScrollArea } from "@chakra-ui/react";
+import { getMonthName } from "@/utils";
 
 interface Props {
   data: Application[];
 }
 
 export default function AppCards({ data }: Props) {
+  const groupedByMonth = data.reduce(
+    (acc, date) => {
+      const monthKey = getMonthName(date.createdAt.day);
+
+      if (!acc[monthKey]) {
+        acc[monthKey] = [];
+      }
+
+      acc[monthKey].push(date);
+      return acc;
+    },
+    {} as Record<string, Application[]>,
+  );
+
   return (
     <ScrollArea.Root height="82vh">
       <ScrollArea.Viewport
@@ -28,8 +43,20 @@ export default function AppCards({ data }: Props) {
         }}
       >
         <ScrollArea.Content spaceY="10px" mt={"30px"}>
-          {data.map((x) => (
-            <AppCard data={x} key={x.id} />
+          {Object.keys(groupedByMonth).map((key) => (
+            <Box display={'flex'} gap={'10px'} flexDirection={'column'} key={key}>
+              <Box
+                as={"h2"}
+                fontWeight={600}
+                fontSize={"14px"}
+                textTransform={"uppercase"}
+              >
+                {key}
+              </Box>
+              {groupedByMonth[key].map((x) => (
+                <AppCard data={x} key={x.id} />
+              ))}
+            </Box>
           ))}
         </ScrollArea.Content>
       </ScrollArea.Viewport>

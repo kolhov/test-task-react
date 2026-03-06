@@ -39,7 +39,7 @@ export const applicationsData = [
   {
     id: 1,
     number: "КС-0001",
-    createdAt: { day: "15.07.2025", time: "09:15:22" },
+    createdAt: { day: "06.03.2026", time: "09:15:22" },
     theme: "Не работает кассовый аппарат",
     pharmacy: { id: 65, address: "Геленджик Островского 7" },
     category: { id: 1, name: "Кассы" },
@@ -52,7 +52,7 @@ export const applicationsData = [
   {
     id: 2,
     number: "КС-0002",
-    createdAt: { day: "15.07.2025", time: "10:42:18" },
+    createdAt: { day: "05.03.2026", time: "10:42:18" },
     theme: "Холодильник не морозит, температура +15",
     pharmacy: { id: 150, address: "Кореновск Красная 108" },
     category: { id: 2, name: "Холодильники" },
@@ -208,7 +208,7 @@ export const applicationsData = [
   {
     id: 14,
     number: "КС-0014",
-    createdAt: { day: "20.07.2025", time: "11:15:27" },
+    createdAt: { day: "20.08.2025", time: "11:15:27" },
     theme: "Обновление ПО на кассе",
     pharmacy: { id: 150, address: "Кореновск Красная 108" },
     category: { id: 6, name: "ИТ" },
@@ -221,7 +221,7 @@ export const applicationsData = [
   {
     id: 15,
     number: "КС-0015",
-    createdAt: { day: "21.07.2025", time: "08:40:19" },
+    createdAt: { day: "21.08.2025", time: "08:40:19" },
     theme: "Замена батареек в ТСД",
     pharmacy: { id: 45, address: "Тимашевск Интернац 3Б" },
     category: { id: 4, name: "Изм. оборуд." },
@@ -234,7 +234,7 @@ export const applicationsData = [
   {
     id: 16,
     number: "КС-0016",
-    createdAt: { day: "21.07.2025", time: "10:25:36" },
+    createdAt: { day: "21.08.2025", time: "10:25:36" },
     theme: "Засор в раковине",
     pharmacy: { id: 164, address: "РНД Сельмаш 92" },
     category: { id: 7, name: "Сантехника" },
@@ -247,7 +247,7 @@ export const applicationsData = [
   {
     id: 17,
     number: "КС-0017",
-    createdAt: { day: "22.07.2025", time: "13:55:44" },
+    createdAt: { day: "22.08.2025", time: "13:55:44" },
     theme: "Не работает сканер штрихкода",
     pharmacy: { id: 190, address: "Геленджик Душистая 24" },
     category: { id: 1, name: "Кассы" },
@@ -260,7 +260,7 @@ export const applicationsData = [
   {
     id: 18,
     number: "КС-0018",
-    createdAt: { day: "22.07.2025", time: "15:30:28" },
+    createdAt: { day: "22.09.2025", time: "15:30:28" },
     theme: "Шум в холодильной витрине",
     pharmacy: { id: 267, address: "Анапа Парковая 67к2" },
     category: { id: 2, name: "Холодильники" },
@@ -273,7 +273,7 @@ export const applicationsData = [
   {
     id: 19,
     number: "КС-0019",
-    createdAt: { day: "23.07.2025", time: "09:10:52" },
+    createdAt: { day: "23.09.2025", time: "09:10:52" },
     theme: "Настройка Wi-Fi роутера",
     pharmacy: { id: 65, address: "Геленджик Островского 7" },
     category: { id: 6, name: "ИТ" },
@@ -286,7 +286,7 @@ export const applicationsData = [
   {
     id: 20,
     number: "КС-0020",
-    createdAt: { day: "23.07.2025", time: "11:45:07" },
+    createdAt: { day: "23.09.2025", time: "11:45:07" },
     theme: "Замена розетки",
     pharmacy: { id: 150, address: "Кореновск Красная 108" },
     category: { id: 5, name: "Помещения" },

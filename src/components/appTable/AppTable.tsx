@@ -1,12 +1,5 @@
 import type { Application } from "@/types";
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  IconButton,
-  Pagination,
-  Table,
-} from "@chakra-ui/react";
+import { Box, Button, Table } from "@chakra-ui/react";
 import {
   createColumnHelper,
   flexRender,
@@ -21,7 +14,6 @@ import StatusBadge from "../ui/StatusBadge";
 import PharmacyTagName from "../ui/PharmacyTagName";
 import TableCreatedAt from "../ui/TableCreatedAt";
 import PriorityBadge from "../ui/PriorityBadge";
-import { Icon } from "@iconify/react";
 
 const columnHelper = createColumnHelper<Application>();
 
