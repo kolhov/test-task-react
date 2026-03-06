@@ -4,11 +4,12 @@ import SearchBar from "@/components/searchBar/SearchBar";
 import { applicationsData } from "@/mock/data";
 import { StatusEnum } from "@/types";
 import { Bleed, Box, Separator } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 
 export default function AppMainLayout() {
   const [isPersonal, setIsPersonal] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(StatusEnum.AllStatuses);
+  const [search, setSearch] = useState<string>("");
 
   function onPersonClick() {
     setIsPersonal((x) => !x);
@@ -16,16 +17,24 @@ export default function AppMainLayout() {
   function onStatusClick(status: StatusEnum) {
     setCurrentStatus(status);
   }
+  function onSearchChange(event: ChangeEvent<HTMLInputElement>) {
+    setSearch(event.target.value);
+  }
 
   const MY_ID = 101;
-
-  const filteredData = applicationsData
-    .filter((x) => (isPersonal ? x.technician.id === MY_ID : true))
-    .filter((x) =>
-      currentStatus === StatusEnum.AllStatuses
-        ? true
-        : x.status.id === currentStatus,
+  let filteredData = applicationsData;
+  if (isPersonal)
+    filteredData = filteredData.filter((x) => x.technician.id === MY_ID);
+  if (currentStatus !== StatusEnum.AllStatuses)
+    filteredData = filteredData.filter((x) => x.status.id === currentStatus);
+  if (search?.length > 0) {
+    const formatedSearch = search.toLowerCase();
+    filteredData = filteredData.filter(
+      ({ number, theme }) =>
+        number.toLowerCase().includes(formatedSearch) ||
+        theme.toLowerCase().includes(formatedSearch),
     );
+  }
 
   return (
     <Box
@@ -35,7 +44,7 @@ export default function AppMainLayout() {
       mt={"21px"}
       flexDirection={"column"}
     >
-      <SearchBar />
+      <SearchBar search={search} onChange={onSearchChange}  />
       <FilterBar
         isPersonal={isPersonal}
         currentStatus={currentStatus}

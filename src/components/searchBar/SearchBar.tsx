@@ -1,24 +1,29 @@
-import {
-  Box,
-  Button,
-  Input,
-  InputGroup
-} from "@chakra-ui/react";
+import { Box, Button, Input, InputGroup } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import AppModalForm from "../applicationModalForm/AppModalForm";
+import type { ChangeEvent } from "react";
 
-export default function SearchBar() {
+interface Props {
+  search: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function SearchBar({ search, onChange }: Props) {
   return (
-    <Box
-      display={"flex"}
-      gap={"13px"}
-    >
+    <Box display={"flex"} gap={"13px"}>
       <InputGroup
-        startElement={<Icon icon={"lucide:search"} style={{ scale: 1.4, color: '#B0B0B0' }} />}
+        startElement={
+          <Icon
+            icon={"lucide:search"}
+            style={{ scale: 1.4, color: "#B0B0B0" }}
+          />
+        }
       >
         <Input
           placeholder="Поиск по номеру или теме заявки"
-          _placeholder={{ color: "#ABABAB", fontSize: '16px' }}
+          _placeholder={{ color: "#ABABAB", fontSize: "16px" }}
+          value={search}
+          onChange={onChange}
         />
       </InputGroup>
       <Button

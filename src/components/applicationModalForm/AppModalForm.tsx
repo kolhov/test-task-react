@@ -19,7 +19,7 @@ export default function AppModalForm() {
   return (
     <Dialog.Root
       size={isMobile ? "full" : "xl"}
-      placement={"center"}
+      placement={{ md: "center" }}
       motionPreset="slide-in-bottom"
     >
       <Dialog.Trigger asChild>
@@ -38,10 +38,15 @@ export default function AppModalForm() {
             <Dialog.Header padding={"30px 36px 0px 36px"}>
               <Dialog.Title fontSize={"24px"}>Создание заявки</Dialog.Title>
             </Dialog.Header>
-            <Dialog.Body padding={"32px 36px 32px 36px"}>
-              <form style={{ display: "flex", gap: "32px" }}>
+            <Dialog.Body padding={{ base: "24px 16px", md: "32px 36px" }}>
+              <Box
+                as={"form"}
+                flexDirection={{ base: "column", md: "row" }}
+                style={{ display: "flex" }}
+                gap={{ base: "35px", md: "32px" }}
+              >
                 <Box flex={1}>
-                  <Field.Root paddingBottom={"46px"}>
+                  <Field.Root paddingBottom={{ base: "24px", md: "46px" }}>
                     <Field.Label>Аптека</Field.Label>
                     <SelectWrap
                       placeholder="Выберите аптеку от которой исходит заявка"
@@ -128,7 +133,7 @@ export default function AppModalForm() {
                     </FileUpload.Root>
                   </Field.Root>
                 </Box>
-              </form>
+              </Box>
             </Dialog.Body>
             <Dialog.Footer
               justifyContent={"flex-start"}
