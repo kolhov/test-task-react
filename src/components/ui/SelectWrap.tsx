@@ -1,29 +1,37 @@
-import { createListCollection, Portal, Select } from "@chakra-ui/react";
+import {
+  createListCollection,
+  Portal,
+  Select,
+  type SelectRootProps,
+} from "@chakra-ui/react";
 import { useMemo } from "react";
 
-interface Props {
+interface Props extends Omit<SelectRootProps, 'collection'> {
   placeholder: string;
   rawData: { label: string; value: string | number }[];
   height?: object | string;
 }
 
-export default function SelectWrap({ placeholder, rawData, height }: Props) {
+export default function SelectWrap({
+  placeholder,
+  rawData,
+  height,
+  ...props
+}: Props) {
   const data = useMemo(
     () => createListCollection({ items: rawData }),
     [rawData],
   );
 
   return (
-    <Select.Root collection={data} width="full">
+    <Select.Root collection={data} width="full" {...props}>
       <Select.HiddenSelect />
       <Select.Control>
         <Select.Trigger
           h={height ?? { base: "42px", md: "40px" }}
           borderRadius={"8px"}
         >
-          <Select.ValueText
-            placeholder={placeholder}
-          />
+          <Select.ValueText placeholder={placeholder} />
         </Select.Trigger>
         <Select.IndicatorGroup>
           <Select.Indicator scale={1.6} translate={"-4px"} />
