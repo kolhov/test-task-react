@@ -1,5 +1,12 @@
 import type { Application } from "@/types";
-import { Table } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  IconButton,
+  Pagination,
+  Table,
+} from "@chakra-ui/react";
 import {
   createColumnHelper,
   flexRender,
@@ -14,6 +21,7 @@ import StatusBadge from "../ui/StatusBadge";
 import PharmacyTagName from "../ui/PharmacyTagName";
 import TableCreatedAt from "../ui/TableCreatedAt";
 import PriorityBadge from "../ui/PriorityBadge";
+import { Icon } from "@iconify/react";
 
 const columnHelper = createColumnHelper<Application>();
 
@@ -79,37 +87,75 @@ export default function AppTable({ data }: Props) {
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    initialState: {
+      pagination: {
+        pageIndex: 0,
+        pageSize: 10,
+      },
+    },
   });
 
   return (
-    <Table.Root size="sm" variant="line" native interactive>
-      <thead className="app-table__header">
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody className="app-table__body">
-        {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map((cell) => (
-              <td key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </Table.Root>
+    <>
+      <Table.Root size="sm" variant="line" native interactive>
+        <thead className="app-table__header">
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody className="app-table__body">
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </Table.Root>
+      <Box display={"flex"} gap={"10px"} mt={"1rem"}>
+        <Button
+          variant={"outline"}
+          onClick={() => table.firstPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {"<<"}
+        </Button>
+        <Button
+          variant={"outline"}
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {"<"}
+        </Button>
+        <Button
+          variant={"outline"}
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          {">"}
+        </Button>
+        <Button
+          variant={"outline"}
+          onClick={() => table.lastPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          {">>"}
+        </Button>
+      </Box>
+    </>
   );
 }
