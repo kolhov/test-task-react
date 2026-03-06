@@ -107,7 +107,7 @@ export default function AppModalForm() {
                             value: x.id,
                             label: x.name,
                           }))}
-                          height={{ base: "42px", md: "48px" }}
+                          height={{ base: "42px", md: "40px" }}
                           value={field.value}
                           onValueChange={(e) => field.onChange(e.value)}
                           onBlur={field.onBlur}
